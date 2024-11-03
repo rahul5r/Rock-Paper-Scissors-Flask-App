@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        form {
+            display: inline-block;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .results {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .choice {
+            margin: 0 20px;
+            text-align: center;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        .winner {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff6347;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Game of Rock Paper Scissors</h1>
+    <form action="/" method="POST">
+        <button type="submit" name="button" value="1">Rock</button>
+        <button type="submit" name="button" value="2">Paper</button>
+        <button type="submit" name="button" value="3">Scissors</button>
+        <br>
+        {% if user_choice %}
+            <div class="results">
+                <div class="choice">
+                    <img src="{{ url_for('static', filename='images/' ~ user_choice ~ '.jpeg') }}" alt="{{ user_choice }}">
+                    <p>User Choice: {{ user_choice }}</p>
+                </div>
+                <div class="choice">
+                    <img src="{{ url_for('static', filename='images/' ~ computer_choice ~ '.jpeg') }}" alt="{{ computer_choice }}">
+                    <p>Computer Choice: {{ computer_choice }}</p>
+                </div>
+            </div>
+            <p class="winner">Winner: {{ winner }}</p>
+        {% endif %}
+    </form>
+</body>
+</html>
